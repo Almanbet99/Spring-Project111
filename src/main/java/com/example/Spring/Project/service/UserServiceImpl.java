@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserById(Long id) {
-        return userRepository.findById(id).orElse(null);
+        return userRepository.findById(id);
     }
 
     @Override
@@ -32,11 +32,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(User user) {
-        userRepository.save(user);
+        userRepository.update(user);
     }
 
     @Override
     public void deleteUser(Long id) {
-        userRepository.deleteById(id);
+        userRepository.delete(id);
     }
 }
+

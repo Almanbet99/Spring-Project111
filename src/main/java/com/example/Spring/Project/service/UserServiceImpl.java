@@ -1,7 +1,7 @@
 package com.example.Spring.Project.service;
 
+import com.example.Spring.Project.dao.UserDao;
 import com.example.Spring.Project.model.User;
-import com.example.Spring.Project.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,35 +9,35 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
+    private final UserDao userDao;
 
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserServiceImpl(UserDao userDao) {
+        this.userDao = userDao;
     }
 
     @Override
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        return userDao.getAllUsers();
     }
 
     @Override
     public User getUserById(Long id) {
-        return userRepository.findById(id);
+        return userDao.getUserById(id);
     }
 
     @Override
     public void saveUser(User user) {
-        userRepository.save(user);
+        userDao.saveUser(user);
     }
 
     @Override
     public void updateUser(User user) {
-        userRepository.update(user);
+        userDao.updateUser(user);
     }
 
     @Override
     public void deleteUser(Long id) {
-        userRepository.delete(id);
+        userDao.deleteUser(id);
     }
 }
 
